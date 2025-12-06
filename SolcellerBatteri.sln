@@ -1,0 +1,43 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F4B57F95-C577-4A29-AC9F-25ED4C393939}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolcellerBatteri.Web", "src\SolcellerBatteri.Web\SolcellerBatteri.Web.csproj", "{28511408-AB5E-4FE4-A807-8DE5B3D7AA95}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolcellerBatteri.Domain", "src\SolcellerBatteri.Domain\SolcellerBatteri.Domain.csproj", "{7030A2BD-D07E-4245-8D46-538BFBCE4CD7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{3002F876-3467-4E41-BABC-CE5B53CC4CE9}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SolcellerBatteri.Tests", "tests\SolcellerBatteri.Tests\SolcellerBatteri.Tests.csproj", "{726AA684-E8F8-4339-A757-56A2711A377A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{28511408-AB5E-4FE4-A807-8DE5B3D7AA95}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{28511408-AB5E-4FE4-A807-8DE5B3D7AA95}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{28511408-AB5E-4FE4-A807-8DE5B3D7AA95}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{28511408-AB5E-4FE4-A807-8DE5B3D7AA95}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7030A2BD-D07E-4245-8D46-538BFBCE4CD7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7030A2BD-D07E-4245-8D46-538BFBCE4CD7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7030A2BD-D07E-4245-8D46-538BFBCE4CD7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7030A2BD-D07E-4245-8D46-538BFBCE4CD7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{726AA684-E8F8-4339-A757-56A2711A377A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{726AA684-E8F8-4339-A757-56A2711A377A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{726AA684-E8F8-4339-A757-56A2711A377A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{726AA684-E8F8-4339-A757-56A2711A377A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{28511408-AB5E-4FE4-A807-8DE5B3D7AA95} = {F4B57F95-C577-4A29-AC9F-25ED4C393939}
+		{7030A2BD-D07E-4245-8D46-538BFBCE4CD7} = {F4B57F95-C577-4A29-AC9F-25ED4C393939}
+		{726AA684-E8F8-4339-A757-56A2711A377A} = {3002F876-3467-4E41-BABC-CE5B53CC4CE9}
+	EndGlobalSection
+EndGlobal
