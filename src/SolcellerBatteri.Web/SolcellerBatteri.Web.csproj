@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\SolcellerBatteri.Domain\SolcellerBatteri.Domain.csproj" />
+    <ProjectReference Include="..\SolcellerBatteri.Infrastructure\SolcellerBatteri.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

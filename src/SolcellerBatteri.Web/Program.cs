@@ -1,7 +1,8 @@
 using SolcellerBatteri.Domain;
 using SolcellerBatteri.Domain.Models;
-using Microsoft.AspNetCore.OpenApi;
-using Microsoft.Extensions.DependencyInjection;
+using SolcellerBatteri.Domain.Interfaces;
+using SolcellerBatteri.Domain.Mappers;
+using SolcellerBatteri.Infrastructure.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,6 +12,18 @@ builder.Services.AddSwaggerGen();
 
 // Registrera BatterySimulator så vi kan få in den via dependency injection
 builder.Services.AddSingleton<BatterySimulator>();
+
+//Registrerar tjänst för att hämta pricer
+builder.Services.AddHttpClient<IEntsoeSpotPriceClient, EntsoeSpotPriceClient>(
+    (httpClient, sp) =>
+    {
+        var configuration = sp.GetRequiredService<IConfiguration>();
+        var token = configuration["Entsoe:ApiToken"]
+                    ?? throw new InvalidOperationException("Entsoe:ApiToken is not configured.");
+
+        return new EntsoeSpotPriceClient(httpClient, token);
+    });
+
 
 var app = builder.Build();
 
@@ -51,6 +64,34 @@ app.MapPost("/simulate", (BatterySettings settings, BatterySimulator simulator) 
     return Results.Ok(result);
 })
 .WithName("SimulateBattery")
+.WithOpenApi();
+
+app.MapGet("/api/spotprices", async (
+    string area,        // t.ex. SE1, SE2, SE3, SE4
+    DateTime start,
+    DateTime end,
+    IEntsoeSpotPriceClient entsoeClient,
+    CancellationToken ct) =>
+{
+    if (end <= start)
+    {
+        return Results.BadRequest("End must be later than start.");
+    }
+
+    string biddingZone;
+    try
+    {
+        biddingZone = EntsoeBiddingZoneMapper.ToEntsoeCode(area);
+    }
+    catch (ArgumentOutOfRangeException ex)
+    {
+        return Results.BadRequest(ex.Message);
+    }
+
+    var prices = await entsoeClient.GetSpotPricesAsync(biddingZone, start, end, ct);
+    return Results.Ok(prices);
+})
+.WithName("GetSpotPricesByArea")
 .WithOpenApi();
 
 app.Run();
